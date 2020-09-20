@@ -53,6 +53,7 @@ router.post(
         check('password', 'Введите пароль').exists()
     ],
     async (req, res) => {
+        console.time('as');
         try {
             const errors = validationResult(req); // валидируем входящие поля
             if (!errors.isEmpty()) { // если есть ошибки в валидации
@@ -85,6 +86,7 @@ router.post(
                 { expiresIn: '1h' }
             );
             res.json({ token, userId: user.id, message: 'Вы зашли в систему' });
+            console.timeEnd('as');
         } catch (e) {
             // 500 статус = серверная ошибка
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' });

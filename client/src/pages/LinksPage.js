@@ -13,9 +13,7 @@ export const LinksPage = () => {
                 Authorization: `Bearer ${token}`
             });
             setLinks(fetched);
-        } catch (e) {
-
-        }
+        } catch (e) { }
     }, [token, request]);
     useEffect(() => {
         fetchLinks();
@@ -25,7 +23,7 @@ export const LinksPage = () => {
     }
     return (
         <>
-            {!loading && <LinksList links={links} />}
+            {!loading && <LinksList links={links} setLinks={setLinks} />}
         </>
     )
 }

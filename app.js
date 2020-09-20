@@ -12,10 +12,10 @@ app.use('/t', require('./routes/redirect.routes'));
 
 // app.use === (/,req) = если идет запрос на / то делаем что-то
 
-if (procces.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'client', 'build')));
     app.get('*', (req, res) => {
-        res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html')); // запускаем и front и back одновременно
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')); // запускаем и front и back одновременно
     }); // * = любой get запрос
 
 }
